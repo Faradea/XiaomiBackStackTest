@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "568029815133",
+    "firebase_url": "https://xiaomebackstacktest.firebaseio.com",
+    "project_id": "xiaomebackstacktest",
+    "storage_bucket": "xiaomebackstacktest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568029815133:android:81024fb3a7469698a388b4",
+        "android_client_info": {
+          "package_name": "com.example.xiaomibackstacktest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568029815133-8rn9ng83ubsb4kvmmpuh3ddcqg6oliu3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.xiaomibackstacktest",
+            "certificate_hash": "417e7cdf75b0c48e93439a9aed4a150298531453"
+          }
+        },
+        {
+          "client_id": "568029815133-sa08p783l9kvo79mtgrpfebq49otevd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHk6jx0V0e7IYMHwGVTjDI0NjMtXV0r-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568029815133-sa08p783l9kvo79mtgrpfebq49otevd7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
