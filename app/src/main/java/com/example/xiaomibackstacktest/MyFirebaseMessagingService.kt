@@ -1,10 +1,7 @@
 package com.example.xiaomibackstacktest
 
 import android.R.attr.label
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
+import android.app.*
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -24,7 +21,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(p0: RemoteMessage?) {
-        Log.d("TAG", "onMessageReceived, message = p0")
+        Log.d("TAG", "onMessageReceived, message = $p0")
 
         val taskBuilder = TaskStackBuilder.create(this).also {
             it.addNextIntent(Intent(this, FirstActivity::class.java))
@@ -37,12 +34,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
         }
 
+        val pendingIntent = taskBuilder.getPendingIntent(0, PendingIntent.FLAG_CANCEL_CURRENT)
+        val taskBuilderIntents = taskBuilder.intents
+        Log.d("TAG", "task builed intents size = ${taskBuilderIntents.size}")
+        taskBuilderIntents.forEach {
+            it.flags
+        }
+
         val notification = NotificationCompat.Builder(this, OTHER_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Test push title")
             .setContentText("Test push text")
             .setAutoCancel(true)
-            .setContentIntent(taskBuilder.getPendingIntent(0, PendingIntent.FLAG_CANCEL_CURRENT))
+            .setContentIntent(pendingIntent)
             .build()
 
         (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).notify(123123, notification)
@@ -52,17 +56,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String?) {
         Log.d("TAG", "Refreshed token: $token")
 
-        val clipboard: ClipboardManager =
-            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText(label.toString(), token)
-        clipboard.setPrimaryClip(clip)
+//        val clipboard: ClipboardManager =
+//            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//        val clip = ClipData.newPlainText(label.toString(), token)
+//        clipboard.setPrimaryClip(clip)
 
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createOtherChannel(): NotificationChannel {
         val name = "Other"
-        val importance = NotificationManager.IMPORTANCE_LOW
+        val importance = NotificationManager.IMPORTANCE_HIGH
         return NotificationChannel(OTHER_CHANNEL_ID, name, importance)
     }
 

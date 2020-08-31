@@ -9,9 +9,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity"></activity>
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SecondActivity"
+            android:launchMode = "singleTop"
+            android:allowEmbedded ="true"
+            android:allowTaskReparenting="false"
+            android:alwaysRetainTaskState="true"
+            android:clearTaskOnLaunch="false"
+            android:documentLaunchMode="never"
+            android:excludeFromRecents="false"
+            android:exported="true"
+            android:finishOnTaskLaunch="false"
+            android:multiprocess="true"
+            android:noHistory="false"
+            android:parentActivityName=".FirstActivity">
+        </activity>
+        <activity android:name=".FirstActivity"
+            android:launchMode = "singleTop"
+            android:allowEmbedded ="true"
+            android:allowTaskReparenting="false"
+            android:alwaysRetainTaskState="true"
+            android:clearTaskOnLaunch="false"
+            android:documentLaunchMode="never"
+            android:excludeFromRecents="false"
+            android:exported="true"
+            android:finishOnTaskLaunch="false"
+            android:multiprocess="true"
+            android:noHistory="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FirstActivity" />
+        </activity>
+        <activity android:name=".MainActivity"
+            android:launchMode = "singleTop"
+            android:allowEmbedded ="true"
+            android:allowTaskReparenting="false"
+            android:alwaysRetainTaskState="true"
+            android:clearTaskOnLaunch="false"
+            android:documentLaunchMode="never"
+            android:excludeFromRecents="false"
+            android:exported="true"
+            android:finishOnTaskLaunch="false"
+            android:multiprocess="true"
+            android:noHistory="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
